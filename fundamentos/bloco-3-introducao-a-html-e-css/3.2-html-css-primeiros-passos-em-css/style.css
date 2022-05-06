@@ -1,0 +1,38 @@
+h1 {
+    size: 65px;
+    color: orange;
+    font-family: sans-serif;
+    font-style: italic;
+}
+
+ul {
+    background-color: azure;
+    line-height: 30px;
+}
+
+.conteudo {
+    background-color: antiquewhite;
+}
+
+p {
+  font-weight: 600;
+  font-size: 3em;
+  text-decoration: underline;
+}
+
+body {
+  font-size: 16px;
+  text-align: center;
+}
+
+#item1 {
+  background-color: yellow;
+}
+
+#item2 {
+    background-color: red;
+  }
+
+  #item3 {
+    background-color: brown;
+  }
