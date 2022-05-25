@@ -39,3 +39,15 @@ function createDezDays() {
     }
   }
 }
+
+//Exercício 2
+createDezDays()
+
+function createHolidaysButton(buttonName) {
+  const buttonsContainer = document.querySelector('.buttons-container');
+  const holidaysButton = document.createElement('button');
+  holidaysButton.innerHTML = buttonName
+  holidaysButton.id = 'btn-holiday';
+  buttonsContainer.appendChild(holidaysButton);
+}
+createHolidaysButton('Feriados');
