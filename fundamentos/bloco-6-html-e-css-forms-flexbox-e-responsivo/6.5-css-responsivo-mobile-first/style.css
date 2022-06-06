@@ -78,7 +78,7 @@ p strong {
   }
 }
 
-@media screen and (min-width: 950px) , (max-width: 600px) {
+@media screen and (min-width: 950px) , (max-width: 650px) {
   .card:nth-of-type(3) {
     display: flex;
   }
