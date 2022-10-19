@@ -1,8 +1,12 @@
-import Form from './Form';
+import Form from './components/Form';
+import TryberInfos from './components/TryberInfos';
 
 function App() {
   return (
-    <Form />
+    <div>
+      <Form />
+      <TryberInfos />
+    </div>
   );
 }
 

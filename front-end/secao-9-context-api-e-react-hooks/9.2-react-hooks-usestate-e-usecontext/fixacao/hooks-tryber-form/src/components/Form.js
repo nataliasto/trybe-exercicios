@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import FormContext from '../context/FormContext';
 
 function Form() {
   const [formState, setFormState] = useState({
@@ -8,6 +9,8 @@ function Form() {
     module: '',
   });
 
+  const {addInfo} = useContext(FormContext);
+
   const handleChange = ({target}) => {
     const {name, value} = target;
     setFormState((prevState) => ({
@@ -16,14 +19,32 @@ function Form() {
     }));
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const {name, age, city, module} = formState;
+    addInfo({
+      name,
+      age,
+      city,
+      module,
+    });
+    setFormState({
+      name: '',
+      age: '',
+      city: '',
+      module: '',
+    })
+  }
+
   return (
-    <form style={{display: 'flex', flexDirection: 'column'}}>
+    <form style={{display: 'flex', flexDirection: 'column'}} onSubmit={handleSubmit}>
       <label htmlFor="name-input">
         Nome completo:
         <input
           type="text"
           id="name-input"
-          name={formState.name}
+          name="name"
+          value={formState.name}
           onChange={(event) => handleChange(event)}
         />
       </label>
@@ -33,7 +54,8 @@ function Form() {
         <input
           type="number"
           id="age-input"
-          name={formState.age}
+          name="age"
+          value={formState.age}
           onChange={(event) => handleChange(event)}
         />
       </label>
@@ -43,7 +65,8 @@ function Form() {
         <input
           type="text"
           id="city-input"
-          name={formState.city}
+          name="city"
+          value={formState.city}
           onChange={(event) => handleChange(event)}
         />
       </label>
