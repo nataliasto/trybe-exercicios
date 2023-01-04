@@ -17,6 +17,12 @@ const readMovies = async () => {
   }
 };
 
+app.get('/movies', async (req, res) => {
+  const movies = await readMovies();
+
+  return res.status(200).json({ movies });
+});
+
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
   const movies = await readMovies();
