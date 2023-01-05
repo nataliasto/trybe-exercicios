@@ -23,6 +23,21 @@ app.get('/movies', async (req, res) => {
   return res.status(200).json({ movies });
 });
 
+app.get('/movies/search', async (req, res) => {
+  try {
+    const { q } = req.query;
+    const movies = await readMovies();
+
+    if (q) {
+      const filtered = movies.filter((m) => m.movie.includes(q));
+      return res.status(200).json(filtered);
+    }
+    return res.status(200).end();
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 app.get('/movies/:id', async (req, res) => {
   const { id } = req.params;
   const movies = await readMovies();
