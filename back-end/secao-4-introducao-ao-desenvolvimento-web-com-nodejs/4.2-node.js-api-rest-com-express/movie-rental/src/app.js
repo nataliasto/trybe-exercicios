@@ -56,4 +56,24 @@ app.post('/movies', async (req, res) => {
   }
 });
 
+app.put('/movies/:id', async (req, res) => {
+  const { id } = req.params;
+  const { movie, price } = req.body;
+  const movies = await readMovies();
+  
+  const index = movies.findIndex((m) => m.id === Number(id));
+  movies[index] = {
+    id: Number(id),
+    movie,
+    price,
+  };
+
+  try {
+    await fs.writeFile(moviesPath, JSON.stringify(movies, null, 2));
+    res.status(201).json(movies[index]);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 module.exports = app;
